@@ -28,21 +28,42 @@
                 </div>
 
 
-                <div class="col-lg-6" dir="rtl">
-                    <h2 class=" mb-3 animated slideInDown" style="    color: hsl(177, 82%, 27%);
-    font-weight: 800;">{{ $event->name }}
-                    </h2>
-                    <p class="animated slideInDown mt-4" style="     color: hsl(0deg 0% 59%);
-    font-weight: 700;">{{ $event->descrption }}</p>
-                    </p>
-                    <br>
-                    <a href="{{asset('assets/file/'.$event->pdfFile)}}" class="btn btn-primary py-3 px-4 animated slideInDown"
-                    style="color: hsl(177, 82%, 27%);
-          background: white;
-          font-weight: bold;"
-                    target="blank">
-                        الملف التعريفي  </a>
-                </div>
+    <!--            <div class="col-lg-6" dir="rtl">-->
+    <!--                <h2 class=" mb-3 animated slideInDown" style="    color: hsl(177, 82%, 27%);-->
+    <!--font-weight: 800;">{{ $event->name }}-->
+    <!--                </h2>-->
+    <!--                <p class="animated slideInDown mt-4" style="     color: hsl(0deg 0% 59%);-->
+    <!--font-weight: 700;">{{ $event->descrption }}</p>-->
+    <!--                </p>-->
+    <!--                <br>-->
+    <!--                <a href="{{asset('assets/file/'.$event->pdfFile)}}" class="btn btn-primary py-3 px-4 animated slideInDown"-->
+    <!--                style="color: hsl(177, 82%, 27%);-->
+    <!--      background: white;-->
+    <!--      font-weight: bold;"-->
+    <!--                target="blank">-->
+    <!--                    الملف التعريفي  </a>-->
+    <!--            </div>-->
+    <div class="col-lg-6 animatedUpDown" dir="rtl">
+  <h2 class="mb-3 animated slideInDown" style="color: hsl(177, 82%, 27%); font-weight: 800;">معرض كفاءات تقنية للتوظيف</h2>
+  <p class="animated slideInDown mt-4" style="color: hsl(0deg 0% 59%); font-weight: 700;">برعاية سمو أمير منطقة عسير الأمير تركي بن طلال بن عبدالعزيز تنظم الإدارة العامة للتدريب التقني المهني بمنطقة عسير معرض كفاءات تقنية للتوظيف. وتعكـس رعايـة سموه للمعرض مــدى الدعــم الكبير الــذي يوليــه لشباب وشابات المنطقة وحرصه على التحاقهم بأفضل الفرص الوظيفية ليساهموا في تحقيق استراتيجيتها بطموحهم ومهاراتهم.</p>
+  <br>
+  <a href="https://invoices.27lashabab.com/assets/file/1675762041.pdf" class="btn btn-primary py-3 px-4 animated slideInDown" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;" target="blank">الملف التعريفي</a>
+</div>
+<style>
+    @keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animatedUpDown {
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+</style>
             </div>
         </div>
     </div>
@@ -281,7 +302,7 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
 
 
 
-                    <div class="col-lg-6" dir="rtl">
+                    <div class="col-lg-6 animatedUpDown" dir="rtl">
                         <h2 class=" mb-3 animated slideInDown" style="color: hsl(177, 82%, 27%);
     font-weight: 800;">{{ $section2->title }}
                         </h2>
@@ -291,7 +312,7 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
                         <br>
                        
                     </div>
-                    <div class="col-lg-6 animated fadeIn">
+                    <div class="col-lg-6 animated fadeIn ">
                         <img class="img-fluid animated pulse infinite" id="hh" style="animation-duration: 3s"
                             src="{{ asset('SecTwo/' . $section2->img) }}" alt="" srcset="" width="450px">
 <style>
@@ -382,11 +403,11 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
                 <div class="row g-4">
                     @foreach ($subscrips as $subscripss)
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item  p-5 " style="    background: white;
+                            <div class="service-item  " style="    background: white;
     border: 2px solid #dadede;">
                                 <img class="img-fluid mb-4"
                                    id="saad" src="{{ asset('compoany/' . $subscripss->Company_subscrip->img) }}" alt=""
-                                style = "">
+                                style = "    height:64%;">
                                 
                                 <style>
                                     #saad{
@@ -398,9 +419,9 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
                                         }
                                     }
                                 </style>
-                              <div style="    text-align: center;
-">
-                                <h5 class="mb-3"  style="color: hsl(177, 82%, 27%);">{{ $subscripss->Company_subscrip->name }}</h5>
+                              <div style="    text-align: center;    overflow-wrap: break-word;
+    height: 10%;">
+                                <h5 class="mb-3"  style="color: hsl(177, 82%, 27%);    font-weight: 900 !important;    font-size: 1.5rem !important;">{{ $subscripss->Company_subscrip->name }}</h5>
     <!--                            <p  style="    color: hsl(0deg 0% 59%);-->
     <!--font-weight: 700;">{{ $subscripss->Company_subscrip->representive }}-->
     <!--                            </p>-->

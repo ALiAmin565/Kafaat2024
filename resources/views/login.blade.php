@@ -88,11 +88,11 @@
                         
                         </a></button>
                         
-                              <button type="submit" class="btn"><a href="{{ URL('Vistore') }}"
-                            class="navigator" style="font-family: Tajawal;">
-                      زائر
+                      <!--        <button type="submit" class="btn"><a href="{{ URL('Vistore') }}"-->
+                      <!--      class="navigator" style="font-family: Tajawal;">-->
+                      <!--زائر-->
                         
-                        </a></button>
+                      <!--  </a></button>-->
                         
                     <!-- <p class="social-text" style="font-family: Tajawal;"> أو قم بالتسجيل من خلال </p>
                     <div class="social-media">

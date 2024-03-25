@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        
+
         كفاءات تقنية
     </title>
     <meta charset="utf-8">
@@ -28,32 +28,34 @@
             z-index: 6;
             display: none;
         }
-        strong{
+
+        strong {
             display: block;
             width: 500px;
             color: red;
             margin-bottom: 10px;
         }
-*{
-    text-align: end;
-}
-   
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-</style>
+        * {
+            text-align: end;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" >
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <h1 style="text-align: center;color:hsl(177, 82%, 27%);">تسجيل بيانات المتقدم</h1>
@@ -116,7 +118,7 @@ input[type=number] {
                         <input id="education" type="education"
                             class="form-control @error('education') is-invalid @enderror" name="education"
                             value="{{ old('education') }}" required autocomplete="education"
-                            placeholder="المؤهل الدراسي"  > 
+                            placeholder="المؤهل الدراسي">
 
                         @error('education')
                             <span class="invalid-feedback" role="alert">
@@ -124,7 +126,32 @@ input[type=number] {
                             </span>
                         @enderror
                     </div>
-                    
+                    {{-- New Code --}}
+                    <div class="input-field">
+                        <i class="fas fa-graduation-cap"></i>
+                        <select id="qualification" class="form-control" name="qualification" required>
+                            <option value="">اختر المؤهل الدراسي</option>
+                            <!-- Dynamically load qualifications here -->
+                            <option value="ابتدائية">شهادة ابتدائية</option>
+                            <option value="إعدادية">شهادة إعدادية</option>
+                            <option value="ثانوية">شهادة ثانوية عامة</option>
+                            <option value="دبلوم متوسط"> دبلوم متوسط</option>
+                            <option value="دبلوم عالي">دبلوم عالي</option>
+                            <option value="بكالوريوس"> بكالوريوس</option>
+                            <option value="ماجستير">ماجستير</option>
+                            <option value="دكتوراه">دكتوراه</option>
+
+
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-briefcase"></i>
+                        <select id="specialist" class="form-control" name="specialist" required>
+                            <option value="">اختر التخصص</option>
+                            <!-- Options will be loaded here -->
+                        </select>
+                    </div>
+                    {{-- End Code --}}
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -139,8 +166,9 @@ input[type=number] {
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password" placeholder="قم بتأكيد كلمة المرور الخاصة بك">
+                        <input id="password-confirm" type="password" class="form-control"
+                            name="password_confirmation" required autocomplete="new-password"
+                            placeholder="قم بتأكيد كلمة المرور الخاصة بك">
                     </div>
                     <span dir="rtl" style="color: hsl(177, 82%, 27%);font-weight: 800;">
                         تحميل السيرة الذاتية (pdf)
@@ -148,9 +176,8 @@ input[type=number] {
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input id="img" type="file" class="form-control @error('img') is-invalid @enderror"
-                    accept="image/png, image/gif, image/jpeg ,application/pdf" 
-
-                            name="img" required autocomplete="new-img">
+                            accept="image/png, image/gif, image/jpeg ,application/pdf" name="img" required
+                            autocomplete="new-img">
 
                         @error('img')
                             <span class="invalid-feedback" role="alert">
@@ -158,7 +185,7 @@ input[type=number] {
                             </span>
                         @enderror
                     </div>
-                    
+
 
                     <input type="submit" value="دخول" class="btn solid" style="font-size:20px;" />
 
@@ -166,3 +193,48 @@ input[type=number] {
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var qualificationSelect = document.getElementById('qualification');
+            var specialistSelect = document.getElementById('specialist');
+
+            // Define the qualifications that enable the specialist dropdown
+            var qualificationsThatEnableSpecialist = ['بكالوريوس', 'دكتوراه', 'ماجستير'];
+
+            // Initially disable the specialist select
+            specialistSelect.disabled = true;
+
+            qualificationSelect.addEventListener('change', function() {
+                // Check if the selected qualification is one that enables the specialist dropdown
+                if (qualificationsThatEnableSpecialist.includes(this.value)) {
+                    // Enable the specialist dropdown
+                    specialistSelect.disabled = false;
+                    // Optionally, populate the specialist dropdown with relevant options here
+                    // For the sake of demonstration, here's how you might clear existing options and add new ones
+                    specialistSelect.innerHTML = '<option value="">اختر التخصص</option>';
+                    var specialists = [
+                        "الزراعة", "حقوق - القانون", "الفن والتصميم", "العلوم الطبية", "الأعمال",
+                        "الطب", "طب الأسنان", "الصيدلة", "علوم التربية", "التربية الرياضية",
+                        "تكنولوجيا المعلومات", "الآداب والعلوم الاجتماعية", "علوم سياسة واقتصاد",
+                        "علم الآثار", "الدراسات الإسلامية", "الهندسة", "اللغات", "العلوم",
+                        "التمريض", "صحافة وإعلان", "العلاج الطبيعي", "التربية النوعية", "الطب البيطري",
+                        "سياحة وفنادق", "علم النفس", "علم الاجتماع", "هندسة البرمجيات",
+                        "علم الأرصاد الجوية", "الطب الإشعاعي", "هندسة النفط والبترول", "إدارة الأعمال",
+                        "هندسة الفضاء", "الدراسات الثقافية", "المناهج وطرائق التدريس",
+                        "العلوم التطبيقية", "الدراسات اليابانية"
+                    ]; // Replace with actual options
+                    specialists.forEach(function(specialist) {
+                        var option = new Option(specialist, specialist);
+                        specialistSelect.add(option);
+                    });
+                } else {
+                    // If the selected qualification is not in the list, disable and clear the specialist select
+                    specialistSelect.disabled = true;
+                    specialistSelect.innerHTML =
+                        '<option value=""> غير متاح تخصص</option>'; // Reset the options
+                }
+            });
+        });
+    </script>
+
+</body>

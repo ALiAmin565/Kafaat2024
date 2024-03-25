@@ -53,46 +53,39 @@ class RegisterController extends Controller
     {
 
 
-              if($data['hidden']=="1")
-        {
-              return Validator::make($data, [
-            'name' => ['required', 'string', 'min:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'img'=>['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            'png'=>['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            'representive'=>['required', 'string', 'min:3'],
-            'brief'=>['required', 'string', 'min:5'],
-            // 'pdfFile'=>['file', 'max:2048']
+        if ($data['hidden'] == "1") {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'img' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'png' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'representive' => ['required', 'string', 'min:3'],
+                'brief' => ['required', 'string', 'min:5'],
+                // 'pdfFile'=>['file', 'max:2048']
 
-        ]);
+            ]);
+        } elseif ($data['hidden'] == "3") {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'educational_specialization' => ['required', 'numeric', 'min:8'],
+                'phone' => ['required', 'numeric', 'min:8'],
+                'education' => ['required', 'string', 'min:3'],
+
+            ]);
+        } else {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'educational_specialization' => ['required', 'numeric', 'min:8'],
+                'phone' => ['required', 'numeric', 'min:8'],
+                'education' => ['required', 'string', 'min:3'],
+                'img' => ['file', 'mimes:pdf,jpeg,png,jpg,gif,svg', 'max:2048'],
+            ]);
         }
-        elseif($data['hidden']=="3")
-        {
-          return Validator::make($data, [
-            'name' => ['required', 'string', 'min:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'educational_specialization'=>['required','numeric','min:8'],
-            'phone'=>['required','numeric','min:8'],
-            'education'=>['required', 'string', 'min:3'],
-
-        ]);
-
-        }
-       else{
-              return Validator::make($data, [
-            'name' => ['required', 'string', 'min:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'educational_specialization'=>['required','numeric','min:8'],
-            'phone'=>['required','numeric','min:8'],
-            'education'=>['required', 'string', 'min:3'],
-            'img'=>['file', 'mimes:pdf,jpeg,png,jpg,gif,svg', 'max:2048'],
-        ]);
-
-        }
-
     }
 
     /**
@@ -103,44 +96,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $qr_code=time().rand();
-        $Spli=str_split($qr_code,4);
-        $qe_code_finsh=$Spli[2];
+        $qr_code = time() . rand();
+        $Spli = str_split($qr_code, 4);
+        $qe_code_finsh = $Spli[2];
 
 
-       if($data['hidden']=="1")
-        {
-            $status="company";
+        if ($data['hidden'] == "1") {
+            $status = "company";
+        } elseif ($data['hidden'] == "3") {
+            $status = "vistore";
+        } else {
+
+            $status = "Jop_serach";
         }
-
-           elseif($data['hidden']=="3")
-        {
-            $status="vistore";
-        }
-        else{
-
-            $status="Jop_serach";
-
-        }
-              return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'qr_code'=>$qe_code_finsh,
-                'password' => Hash::make($data['password']),
-                'status' => $status,
-                ]);
-
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'qr_code' => $qe_code_finsh,
+            'password' => Hash::make($data['password']),
+            'status' => $status,
+        ]);
     }
     public function showRegistrationForm(Request $request)
     {
 
-        if ($request->id == 1)
-        {
+        if ($request->id == 1) {
 
             return view('company');
-        }
-        elseif($request->id == 2)
-        {
+        } elseif ($request->id == 2) {
 
             return view('registerjob');
         }

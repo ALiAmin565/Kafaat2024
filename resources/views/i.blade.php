@@ -316,8 +316,8 @@
                 </form>
             @elseif (Auth::user()->status == 'Super_Admin')
                 <a href="{{ route('home_page') }}" id="logo_phone">
-                    <img id="logo_for_phone" class="img-fluid me-2"
-                        src="{{ asset('logo/LogoMain.png') }}"alt="" style="width: 200px;">
+                    <img id="logo_for_phone" class="img-fluid me-2" src="{{ asset('logo/LogoMain.png') }}"alt=""
+                        style="width: 200px;">
                 </a>
 
 
@@ -462,8 +462,7 @@ document.getElementById('logout-form').submit();">تسجيل
         <div class="h-100 d-lg-inline-flex align-items-center d-none">
             <a href="{{ route('home_page') }}" class="navbar-brand d-flex align-items-center">
                 <h2 class="m-0 text-primary">
-                    <img class="img-fluid me-2" src="{{ asset('logo/LogoMain.png') }}"alt=""
-                        style="width: 200px;">
+                    <img class="img-fluid me-2" src="{{ asset('logo/LogoMain.png') }}"alt="" style="width: 200px;">
                 </h2>
             </a>
         </div>
@@ -615,7 +614,7 @@ document.getElementById('logout-form').submit();">تسجيل
         </h2>
 
 
-<img src="{{ asset('img/qrCode/' . Auth::user()->ahmed[0]->id . '.png') }}" </div>
+        <img src="{{ asset('img/qrCode/' . Auth::user()->ahmed[0]->id . '.png') }}" </div>
 
 
 
@@ -790,8 +789,7 @@ document.getElementById('logout-form').submit();">تسجيل
                         <td>
                             <a href="{{ asset('assets/file/' . $User_company->jop->CV) }}" target="_blank"
                                 class="text-center" download=""
-                                style="font-weight: 800;
-    color: hsl(177, 82%, 27%);">
+                                style="font-weight: 800;color: hsl(177, 82%, 27%);">
                                 تحميل السيرة الذاتية
                             </a>
                         </td>
@@ -859,6 +857,91 @@ document.getElementById('logout-form').submit();">تسجيل
     <hr>
     <hr>
     <!--- End of Third section-->
+    <!--- Start of Fourth section-->
+    <div style="margin: 1rem;">
+        <table id="customers container-sm" style="text-align: right; width: 100%; direction: rtl; "
+            class="table table-striped ">
+            <tr>
+
+                <th style="text-align: right;">:تفاصيل الشركة</th>
+
+
+            </tr>
+            <tbody id="galal">
+
+                <tr class="border-t-2">
+                    <td colspan=""> الشركة</td>
+                    <td>لينك الاجتماع </td>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                </tr>
+                <style>
+                    @media (max-width:700px) {
+                        table {
+                            display: flex;
+                            direction: rtl;
+
+                            flex-direction: column;
+                        }
+
+                        table tr {
+                            display: flex;
+                            flex-direction: column;
+                            direction: rtl;
+
+                        }
+
+                        .border-t-2 {
+                            display: flex;
+                            flex-direction: column-reverse;
+                        }
+                    }
+                </style>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <!--- End of Fourth section-->
 
 
     <!--- Start of Fourth section-->
@@ -990,10 +1073,7 @@ document.getElementById('logout-form').submit();">تسجيل
                     <th style="text-align: left;" colspan="1" rowspan="2"></th>
                     <th style="text-align: left;" colspan="3" rowspan="2">
                         <button class=" h-16" type="submit"
-                            style="color: hsl(177, 82%, 27%);
-    background: white;
-    font-weight: bold;
-    ">
+                            style="color: hsl(177, 82%, 27%);background: white;font-weight: bold;">
                             حفظ التعديلات
                         </button>
 

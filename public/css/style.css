@@ -152,6 +152,8 @@ h6,
 .service-item {
     position: relative;
     overflow: hidden;
+        height: 30rem;
+
 }
 
 .service-item::after {
