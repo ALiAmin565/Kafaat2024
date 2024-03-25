@@ -11,7 +11,7 @@
             border-radius: 50%
         }
     </style>
-    <div class="container-fluid hero-header bg-light " style="background-image: url({{ asset('img/s10.png') }})" >
+    <div class="container-fluid hero-header bg-light " style="background-image: url({{ asset('img/s10.png') }})">
 
         <table id="test" class="table table-hover ">
             <thead>
@@ -44,18 +44,17 @@
                                 <input type="hidden" name="event_id" value="{{ $events->id }} ">
                                 {{-- start_date --}}
                                 <td>
-  <select class="form-select" aria-label="Default select example" name="data">
-  <?php
-          $begin = $events->start_date;
-            $end = $events->end_date;
-       
-            while (strtotime($begin) <= strtotime($end)) {
-   
-    echo "<option value=$begin>" . $begin . '</option>';
-
-   echo  $begin = date ("Y-m-d", strtotime("+1 days", strtotime($begin)));
-}
-                      ?>       
+                                    <select class="form-select" aria-label="Default select example" name="data">
+                                        <?php
+                                        $begin = $events->start_date;
+                                        $end = $events->end_date;
+                                        
+                                        while (strtotime($begin) <= strtotime($end)) {
+                                            echo "<option value=$begin>" . $begin . '</option>';
+                                        
+                                            echo $begin = date('Y-m-d', strtotime('+1 days', strtotime($begin)));
+                                        }
+                                        ?>
 
                                     </select>
 
@@ -82,16 +81,15 @@
     </tbody>
     </table>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
-     if($(window).width() < 1000)
-{
-     $("#amr").hide();
-     $("#samir").hide();
-     $("#test").attr('class','table table-responsive')
-//   alert(1000000);
-} else {
-   // change functionality for larger screens
-}
-</script>
+        if ($(window).width() < 1000) {
+            $("#amr").hide();
+            $("#samir").hide();
+            $("#test").attr('class', 'table table-responsive')
+            //   alert(1000000);
+        } else {
+            // change functionality for larger screens
+        }
+    </script>
 @endsection

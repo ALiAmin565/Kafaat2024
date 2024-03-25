@@ -131,17 +131,9 @@
                         <i class="fas fa-graduation-cap"></i>
                         <select id="qualification" class="form-control" name="qualification" required>
                             <option value="">اختر المؤهل الدراسي</option>
-                            <!-- Dynamically load qualifications here -->
-                            <option value="ابتدائية">شهادة ابتدائية</option>
-                            <option value="إعدادية">شهادة إعدادية</option>
-                            <option value="ثانوية">شهادة ثانوية عامة</option>
-                            <option value="دبلوم متوسط"> دبلوم متوسط</option>
-                            <option value="دبلوم عالي">دبلوم عالي</option>
-                            <option value="بكالوريوس"> بكالوريوس</option>
-                            <option value="ماجستير">ماجستير</option>
-                            <option value="دكتوراه">دكتوراه</option>
-
-
+                            @foreach ($qualifications as $qualification)
+                                <option value="{{ $qualification->id }}">{{ $qualification->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="input-field">
@@ -151,6 +143,25 @@
                             <!-- Options will be loaded here -->
                         </select>
                     </div>
+
+                    <script>
+                        document.getElementById('qualification').addEventListener('change', function() {
+                            var qualificationId = this.value;
+                            var specialistSelect = document.getElementById('specialist');
+                            specialistSelect.innerHTML = '<option value="">اختر التخصص</option>'; // Reset specialist dropdown
+
+                            // Fetch specializations based on the selected qualification
+                            fetch(`/specializations-for-qualification/${qualificationId}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    data.forEach(function(specialization) {
+                                        var option = new Option(specialization.name, specialization.id);
+                                        specialistSelect.appendChild(option);
+                                    });
+                                });
+                        });
+                    </script>
+
                     {{-- End Code --}}
 
                     <div class="input-field">
@@ -193,48 +204,5 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var qualificationSelect = document.getElementById('qualification');
-            var specialistSelect = document.getElementById('specialist');
-
-            // Define the qualifications that enable the specialist dropdown
-            var qualificationsThatEnableSpecialist = ['بكالوريوس', 'دكتوراه', 'ماجستير'];
-
-            // Initially disable the specialist select
-            specialistSelect.disabled = true;
-
-            qualificationSelect.addEventListener('change', function() {
-                // Check if the selected qualification is one that enables the specialist dropdown
-                if (qualificationsThatEnableSpecialist.includes(this.value)) {
-                    // Enable the specialist dropdown
-                    specialistSelect.disabled = false;
-                    // Optionally, populate the specialist dropdown with relevant options here
-                    // For the sake of demonstration, here's how you might clear existing options and add new ones
-                    specialistSelect.innerHTML = '<option value="">اختر التخصص</option>';
-                    var specialists = [
-                        "الزراعة", "حقوق - القانون", "الفن والتصميم", "العلوم الطبية", "الأعمال",
-                        "الطب", "طب الأسنان", "الصيدلة", "علوم التربية", "التربية الرياضية",
-                        "تكنولوجيا المعلومات", "الآداب والعلوم الاجتماعية", "علوم سياسة واقتصاد",
-                        "علم الآثار", "الدراسات الإسلامية", "الهندسة", "اللغات", "العلوم",
-                        "التمريض", "صحافة وإعلان", "العلاج الطبيعي", "التربية النوعية", "الطب البيطري",
-                        "سياحة وفنادق", "علم النفس", "علم الاجتماع", "هندسة البرمجيات",
-                        "علم الأرصاد الجوية", "الطب الإشعاعي", "هندسة النفط والبترول", "إدارة الأعمال",
-                        "هندسة الفضاء", "الدراسات الثقافية", "المناهج وطرائق التدريس",
-                        "العلوم التطبيقية", "الدراسات اليابانية"
-                    ]; // Replace with actual options
-                    specialists.forEach(function(specialist) {
-                        var option = new Option(specialist, specialist);
-                        specialistSelect.add(option);
-                    });
-                } else {
-                    // If the selected qualification is not in the list, disable and clear the specialist select
-                    specialistSelect.disabled = true;
-                    specialistSelect.innerHTML =
-                        '<option value=""> غير متاح تخصص</option>'; // Reset the options
-                }
-            });
-        });
-    </script>
 
 </body>

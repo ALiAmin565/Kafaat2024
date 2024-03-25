@@ -310,4 +310,27 @@
 
     </ul>
 </li>
-
+<li class="nav-item" >
+    <a href="#" class="nav-link bg-primary">
+        <i class="fa-solid fa-gear"></i>                
+        <p>
+            أضافة التخصصات      
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ URL('admin/create') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p> أضافة </p>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="{{ URL('admin/show') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>  كل المؤهلات </p>
+            </a>
+        </li>
+    </ul>
+</li>

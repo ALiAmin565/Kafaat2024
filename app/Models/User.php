@@ -55,5 +55,4 @@ class User extends Authenticatable
 
           return $this->hasOne(JopSearch::class,'user_id');
     }
-  
 }

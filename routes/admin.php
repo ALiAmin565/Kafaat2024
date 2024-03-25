@@ -2,19 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ComController;
-use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\Company_Event;
-use App\Http\Controllers\Admin\LogoCompanyController;
-use App\Http\Controllers\Admin\QuestionController;
-use App\Http\Controllers\Admin\SectionOneController;
-use App\Http\Controllers\Admin\SectionTwoController;
-use App\Http\Controllers\Admin\SectionThreeController;
-use App\Http\Controllers\Admin\SectionPdfController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EmailController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\SectionOneController;
+use App\Http\Controllers\Admin\SectionPdfController;
+use App\Http\Controllers\Admin\SectionTwoController;
+use App\Http\Controllers\Admin\LogoCompanyController;
+use App\Http\Controllers\Admin\SectionThreeController;
 use App\Http\Controllers\Admin\User_vistoreController;
+use App\Http\Controllers\QualificationSpecializationController;
 
 
 
@@ -110,6 +111,12 @@ Route::get('update_subscrip/{id}',[ComController::class,'update_subscrip'])->nam
 
 Route::post('edite_subscrip/{id}',[ComController::class,'edite_subscrip'])->name('edite_subscrip');
 
+
+Route::get('/create', [QualificationSpecializationController::class, 'create']);
+Route::post('/store', [QualificationSpecializationController::class, 'store']);
+Route::get('/show', [QualificationSpecializationController::class, 'show'])->name('qualifications.index');
+Route::delete('/qualifications/{qualification}', [QualificationSpecializationController::class, 'destroy'])->name('qualifications.destroy');
+Route::put('/qualifications/{qualification}', [QualificationSpecializationController::class, 'update'])->name('qualifications.update');
 
 
 });

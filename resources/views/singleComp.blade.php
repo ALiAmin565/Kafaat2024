@@ -127,8 +127,6 @@
                         }
                     </style>
                     <div style="transform:translateY(-300px)" class="css-15orz5f">
-
-
                         <style data-emotion="css abkpd7">
                             .css-abkpd7 {
                                 background: #ffffff;
@@ -483,7 +481,6 @@
                             }
                         </style>
                         <div class="css-bjn8wh">
-
                             <a>
                                 <style data-emotion="css jb4x6y">
                                     .css-jb4x6y {
@@ -528,8 +525,7 @@
                                     }
                                 }
                             </style>
-                            <h1 class="css-f9uh36" style="    font-size: 24px !important;
-">{{ $company[0]->name }}</h1>
+                            <h1 class="css-f9uh36" style="    font-size: 24px !important;">{{ $company[0]->name }}</h1>
 
                             <style data-emotion="css 11rcwxl">
                                 .css-11rcwxl {
@@ -674,12 +670,12 @@
                                 </div>
                                 <div>
 
-                                
 
-    
-  
-<img src={{asset('img/qrCode/'.$company[0]->id.'.png')}}>
-                     
+
+
+
+                                    <img src={{ asset('img/qrCode/' . $company[0]->id . '.png') }}>
+
 
                                 </div>
 
@@ -841,9 +837,7 @@
                                         @else
                                             <button type="button" class="btn"
                                                 style="
-                                                color: hsl(177, 82%, 27%);
-    background: white;
-    font-weight: bold;
+                                                color: hsl(177, 82%, 27%);background: white;font-weight: bold;
 
                                             ">
                                                 تم التسجيل بنجاح
@@ -851,28 +845,31 @@
 
 
                                             <button class="btn btn-danger"
-                                                onclick="event.preventDefault();
-document.getElementById('asd').submit();">هل
+                                                onclick="event.preventDefault();document.getElementById('asd').submit();">هل
                                                 تود الحذف</button>
                                         @endif
                                     @else
                                         <button type="button"
                                             style="
-                                            color: hsl(177, 82%, 27%);
-    background: white;
-    font-weight: bold;
-}
+                                            color: hsl(177, 82%, 27%);background: white;font-weight: bold;}
                                         ">
                                             <a href={{ route('login') }} class="btn"
                                                 style="
-                                            color: hsl(177, 82%, 27%);
-    background: white;
-    font-weight: bold; pad">
+                                            color: hsl(177, 82%, 27%);background: white;font-weight: bold; pad">
                                                 التسجيل</a>
                                         </button>
                                     @endif
                                 </form>
 
+                                <button type="button" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;">
+                                    <a href="mailto:{{ $company[0]->User->email }}" class="btn" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold; text-decoration: none;">
+                                        قم بارسال ايميل
+                                    </a>
+                                </button>
++                                
+
+
+                                {{ $company[0]->email }}
 
                                 @if (Auth::user())
                                     <form action="{{ route('get_company_delete') }}" method="post" id="asd">
