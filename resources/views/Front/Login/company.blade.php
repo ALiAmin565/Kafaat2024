@@ -39,6 +39,21 @@
 
 <body dir="rtl"  >
 
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5" style="
+    display: flex;
+    justify-content: space-between;
+    background: #f1eeee !important;">
+    <a href="{{ route('home_page') }}" class="navbar-brand">
+        <img id="logo_for_phone" class="img-fluid" src="{{ asset('logo/LogoMain.png') }}" alt="Logo" style="width: 180px;">
+    </a>
+
+    <div class="navbar-nav ml-auto">
+        <a href="{{ route('home_page') }}" class="nav-item nav-link active" style="font-size: larger; font-weight: 700;">
+            <i class="fa fa-home"></i> 
+            الصفحة الرئيسية
+        </a>
+    </div>
+</nav>
 
     <div class="container ">
         <div class="row justify-content-center text-center">
@@ -173,7 +188,7 @@
 </div>
                     
                     
-                    <input type="submit" value="دخول" class="btn solid" style="font-size:20px;" />
+                    <input type="submit" value="دخول" class="btn solid" style="font-size:20px;    border-radius: 0.5rem;" />
                     {{--  <input type="submit" value="تسجيل" class="btn solid" />  --}}
 
                     </div>

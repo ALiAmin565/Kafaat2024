@@ -79,7 +79,7 @@
 }
 </style>
 
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5" style="height:10vh">
 
 
     @if (Auth::check())
@@ -187,6 +187,7 @@
 
 {{-- ----------------------------------------------------------- --}}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon" onclick="ahmed()"></span>
@@ -197,19 +198,27 @@
             <a href="{{ route('home_page') }}" id="homepage_forPhone" class="nav-item nav-link active"
             style="font-size: larger;
     font-weight: 700;"
-            >الصفحة الرئيسية</a>
+            > الصفحة الرئسية
+                    <i class="fa fa-home"></i> 
+                   
+                   </a>
 
             <a href="{{ route('applicants') }}" class="nav-item nav-link"
             style="font-size: larger;
     font-weight: 700;"
             >
               ملفات المعرض
+                <i class="fa-solid fa-file"></i>
                 </a>
 
                 <a href="{{ route('home_page') }}" id="homepage_forPhone2" class="nav-item nav-link active"
                 style="font-size: larger;
         font-weight: 700;"
-                >الصفحه الرئيسية</a>
+                
+                > الصفحة الرئسية
+                    <i class="fa fa-home"></i> 
+                   
+                   </a>
 
 
                 @if (Auth::check())

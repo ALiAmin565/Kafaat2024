@@ -47,12 +47,18 @@ class User extends Authenticatable
     public function ahmed()
     {
 
-          return $this->hasMany(Company::class,'user_id');
+        return $this->hasMany(Company::class, 'user_id');
     }
 
     public function JopSearch()
     {
 
-          return $this->hasOne(JopSearch::class,'user_id');
+        return $this->hasOne(JopSearch::class, 'user_id');
+    }
+
+    // Relationship to SpecialistRole
+    public function specialistRoles()
+    {
+        return $this->hasMany(SpecialistRole::class, 'company_id');
     }
 }

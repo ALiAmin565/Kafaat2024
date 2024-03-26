@@ -44,7 +44,7 @@
     <!--                    الملف التعريفي  </a>-->
     <!--            </div>-->
     <div class="col-lg-6 animatedUpDown" dir="rtl">
-  <h2 class="mb-3 animated slideInDown" style="color: hsl(177, 82%, 27%); font-weight: 800;">معرض كفاءات تقنية للتوظيف</h2>
+  <h2 class="mb-3 animated slideInDown" style="color: #3e3e3e; font-weight: 800;">معرض كفاءات تقنية للتوظيف</h2>
   <p class="animated slideInDown mt-4" style="color: hsl(0deg 0% 59%); font-weight: 700;">برعاية سمو أمير منطقة عسير الأمير تركي بن طلال بن عبدالعزيز تنظم الإدارة العامة للتدريب التقني المهني بمنطقة عسير معرض كفاءات تقنية للتوظيف. وتعكـس رعايـة سموه للمعرض مــدى الدعــم الكبير الــذي يوليــه لشباب وشابات المنطقة وحرصه على التحاقهم بأفضل الفرص الوظيفية ليساهموا في تحقيق استراتيجيتها بطموحهم ومهاراتهم.</p>
   <br>
   <a href="https://invoices.27lashabab.com/assets/file/1675762041.pdf" class="btn btn-primary py-3 px-4 animated slideInDown" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;" target="blank">الملف التعريفي</a>
@@ -258,40 +258,40 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
     <!-- Timer Start -->
     <div class="container-xxl  ">
         <div class="container py-5">
-            <div class="row g-3">
-            <div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="text-center p-3">
-                        {{-- mins --}}
-                        <h1 class="mb-0" id="mins" style="color: #7c7c7c;"></h1>
-                        <span class="text-primary " style="font-size: 1.75rem;">دقائق</span>
-                    </div>
-                </div>
-                <div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="text-center p-3" >
-                        {{-- ---------------hours---------  --}}
-                        <h1 class="mb-0" id="hours" style="color: #7c7c7c;"></h1>
-                        <span class="text-primary" style="font-size: 1.75rem;">ساعات </span>
-                    </div>
-                </div>
-                <div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="text-center p-3">
-                        {{-- days --}}
-                        <h1 class="mb-0" id="days" style="color: #7c7c7c;"></h1>
-                        <span class="text-primary"
-                        style="font-size: 1.75rem;">ايام</span>
-                    </div>
-                </div>
+            <!--<div class="row g-3">-->
+            <!--<div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.5s">-->
+            <!--        <div class="text-center p-3">-->
+            <!--            {{-- mins --}}-->
+            <!--            <h1 class="mb-0" id="mins" style="color: #7c7c7c;"></h1>-->
+            <!--            <span class="text-primary " style="font-size: 1.75rem;">دقائق</span>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--    <div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.3s">-->
+            <!--        <div class="text-center p-3" >-->
+            <!--            {{-- ---------------hours---------  --}}-->
+            <!--            <h1 class="mb-0" id="hours" style="color: #7c7c7c;"></h1>-->
+            <!--            <span class="text-primary" style="font-size: 1.75rem;">ساعات </span>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--    <div class="col-4 col-md-4 wow fadeIn" data-wow-delay="0.1s">-->
+            <!--        <div class="text-center p-3">-->
+            <!--            {{-- days --}}-->
+            <!--            <h1 class="mb-0" id="days" style="color: #7c7c7c;"></h1>-->
+            <!--            <span class="text-primary"-->
+            <!--            style="font-size: 1.75rem;">ايام</span>-->
+            <!--        </div>-->
+            <!--    </div>-->
 
 
 
                 <!-- <div class="col-3 col-md-4 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="text-center p-3">
-                        <h1 class="mb-0" id="secs" style="color: #7c7c7c;"></h1>
-                        <span class="text-primary" style="font-size: 1.75rem;">ثواني</span>
-                    </div>
-                </div> -->
+            <!--        <div class="text-center p-3">-->
+            <!--            <h1 class="mb-0" id="secs" style="color: #7c7c7c;"></h1>-->
+            <!--            <span class="text-primary" style="font-size: 1.75rem;">ثواني</span>-->
+            <!--        </div>-->
+            <!--    </div> -->-->
 
-            </div>
+            <!--</div>-->
         </div>
         <!-- Timer End -->
 
@@ -303,7 +303,7 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
 
 
                     <div class="col-lg-6 animatedUpDown" dir="rtl">
-                        <h2 class=" mb-3 animated slideInDown" style="color: hsl(177, 82%, 27%);
+                        <h2 class=" mb-3 animated slideInDown" style="color: #3e3e3e;
     font-weight: 800;">{{ $section2->title }}
                         </h2>
                         <p class="animated slideInDown mt-4" style="color: hsl(0deg 0% 59%);
@@ -342,7 +342,7 @@ ff                        d="M14.9994 6.28949C10.5334 6.28949 6.91138 9.71137 6.
 
 
                     <div class="col-lg-6" dir="rtl">
-                        <h2 class=" mb-3 animated slideInDown" style="color: hsl(177, 82%, 27%);
+                        <h2 class=" mb-3 animated slideInDown" style="color: #3e3e3e;
     font-weight: 800;"> {{ $section3->title }}</h2>
                         <p class="animated slideInDown mt-4" style="color: hsl(0deg 0% 59%);
     font-weight: 700;">{{ $section3->descrption }}</p>

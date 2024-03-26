@@ -23,7 +23,7 @@
     @yield('container')
     @include('include.footer')
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+    <a style="border-radius:.5rem" href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top active"><i
             class="bi bi-arrow-up" style="    margin: -8px;"></i></a>
     @include('include.script')
 </body>

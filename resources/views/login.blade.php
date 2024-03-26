@@ -62,21 +62,7 @@
                     </div>
 
                     <input type="submit" style="font-family: Tajawal;" value="دخول" class="btn solid" style="font-size:20px;" />
-                    <!-- <p class="social-text"> أو قم بالتسجيل من خلال </p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div> -->
+
                 </form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title" style="font-family: Tajawal;">انشاء حساب جديد</h2>
@@ -88,27 +74,7 @@
                         
                         </a></button>
                         
-                      <!--        <button type="submit" class="btn"><a href="{{ URL('Vistore') }}"-->
-                      <!--      class="navigator" style="font-family: Tajawal;">-->
-                      <!--زائر-->
-                        
-                      <!--  </a></button>-->
-                        
-                    <!-- <p class="social-text" style="font-family: Tajawal;"> أو قم بالتسجيل من خلال </p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div> -->
+
                 </form>
 
             </div>

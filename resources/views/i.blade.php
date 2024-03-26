@@ -14,7 +14,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.css">
     <!-- Scripts -->
-    <script src="js/app.js" defer></script>
+    <script src="js/app.js" defer></script
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         [wire\:loading],
         [wire\:loading\.delay],
@@ -862,20 +864,49 @@ document.getElementById('logout-form').submit();">تسجيل
         <table id="customers container-sm" style="text-align: right; width: 100%; direction: rtl; "
             class="table table-striped ">
             <tr>
-
+<!--meeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeting-->
                 <th style="text-align: right;">:تفاصيل الشركة</th>
 
 
             </tr>
             <tbody id="galal">
+ <tr class="border-t-2">
+        <th>الشركة</th>
+        <th>لينك الاجتماع</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><button class="btn btn-success ms-2" onclick="showPopup()"
+        style="color: hsl(177, 82%, 27%);
+    background: white;
+    font-weight: bold;
+    width: fit-content;">إضافة اجتماع</button></td>
+    </tr>
+    <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%, -50%); background-color:white; padding:20px; border:1px solid #ccc; z-index:1000;    direction: rtl;
+">
+    <label for="meetingLink">لينك الاجتماع:</label>
+    <input type="url" id="meetingLink" name="meetingLink" style="    margin: auto;">
+    <button style="color: hsl(177, 82%, 27%);
+    background: white;
+    font-weight: bold;
+        margin-top: 1rem;
+    " onclick="addMeetingLink()">تم</button>
+</div>
+<script>
+function showPopup() {
+    document.getElementById("popup").style.display = "block";
+}
 
-                <tr class="border-t-2">
-                    <td colspan=""> الشركة</td>
-                    <td>لينك الاجتماع </td>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                </tr>
+function addMeetingLink() {
+    // هنا يمكنك إضافة الكود لتخزين الرابط أو إرساله إلى الخادم
+    var link = document.getElementById("meetingLink").value;
+    console.log(link); // مثال: طباعة الرابط في الكونسول
+
+    // إغلاق النافذة المنبثقة
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
                 <style>
                     @media (max-width:700px) {
                         table {
@@ -1036,55 +1067,150 @@ document.getElementById('logout-form').submit();">تسجيل
     <hr>
     <hr>
     <!--- End of Fourth section-->
-    <div style="margin: 1rem;direction: rtl;">
-        <table id="customers container-sm" style="text-align: right; width: 100%; " class="table table-striped ">
-            <form method="POST" action={{ route('NewUpdate', Auth::user()->id) }} enctype="multipart/form-data">
-                @csrf
 
-
-                <tr>
-
-                </tr>
-                <tbody>
-
-                    <tr class="border-t-2">
-
-                        <td style="    width: 100%;">الوظائف المتاحة</td>
-                    </tr>
+    <div style="margin: 1rem; direction: rtl;">
+        <form id="specialistForm" method="POST"
+            action="{{ route('store_specialist_roles', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data">
+            @csrf
+            <table id="customers-container-sm" style="text-align: right; width: 100%;" class="table table-striped ">
+                <thead>
                     <tr>
-
-
-                        <td style="    width: 100%;">
-                            <div class="input-group mb-3"style="    position: static;" dir="rtl">
-
-                                <textarea name="workAvailable" id="" cols="30" class="form-control" placeholder="الوظائف المتاحة"
-                                    style="margin-top: 2%;"></textarea>
-                                {{-- <input type="text" name="workAvailable" class="form-control"
-                                    placeholder="الوظائف" aria-label="Username" aria-describedby="basic-addon1" style="display: inline;    position: static;"> --}}
-                            </div>
-                        </td>
-
+                        <th>التخصص المطلوب</th>
+                        <th>عدد الأماكن المتاحة</th>
+                        <th>المؤهلات المطلوبة</th>
+                        <th>شروط التقديم للوظيفة</th>
+                        <th>إجراءات</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+            <button type="button" id="add-specialist-btn" class="btn btn-primary" style="color: hsl(177, 82%, 27%);
+    background: white;
+    font-weight: bold;
+    width: fit-content;">إضافة وظيفة</button>
+            <button type="submit" class="btn btn-primary" style="color: hsl(177, 82%, 27%);
+    background: white;
+    font-weight: bold;
+    width: fit-content;">تسجيل الوظائف </button>
+        </form>
+    </div>
+    @if (isset($specialists))
+        <div class="mt-4" dir="rtl">
+            <h3>الوظائف المطلوبة </h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>التخصص المطلوب</th>
+                        <th>عدد الأماكن المتاحة</th>
+                        <th>	المؤهلات المطلوبة</th>
+                        <th>شروط التقديم للوظيفة	</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($specialists as $specialist)
+                        <tr>
+                            <td>{{ $specialist->role }}</td>
+                            <td>{{ $specialist->available_places }}</td>
+                            <td>{{ $specialist->qualifications }}</td>
+                            <td>{{ $specialist->job_conditions }}</td>
+                            <td>
+                                <!-- Edit Button, triggers modal -->
+                                <button type="button" class="btn btn-primary edit-btn" data-toggle="modal"
+                                    data-target="#editModal" data-specialist-id="{{ $specialist->id }}"
+                                    data-role="{{ $specialist->role }}"
+                                    data-available-places="{{ $specialist->available_places }}"
+                                    data-qualifications="{{ $specialist->qualifications }}"
+                                    data-job-conditions="{{ $specialist->job_conditions }}" style="margin-top: .75rem;
+    background: #6060ff;
+    width: fit-content; " onmouseover="this.style.color='white';" onmouseout="this.style.background='#6060ff';">تعديل</button>
 
-
+                            </td>
+                            <td>
+                                <form id="delete-form-{{ $specialist->id }}"
+                                    action="{{ route('specialist.destroy', $specialist->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-danger"
+                                        onclick="confirmDelete({{ $specialist->id }})" 
+                                        style="margin-top: .75rem;
+    background: red;
+    width: fit-content;">
+                                        حذف
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
 
                 </tbody>
-                <tr>
-                    <th style="text-align: left;" colspan="1" rowspan="2"></th>
-                    <th style="text-align: left;" colspan="3" rowspan="2">
-                        <button class=" h-16" type="submit"
-                            style="color: hsl(177, 82%, 27%);background: white;font-weight: bold;">
-                            حفظ التعديلات
+            </table>
+        </div>
+    @endif
+    {{-- @foreach ($specialists as $specialist) --}}
+    <!-- Modal -->
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" dir="rtl" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="editForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Specialist</h5>
+                        <button type="button" style="height: auto;
+    width: 2rem;
+    font-size: 1.25rem;
+    border: none;" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
                         </button>
+                    </div>
+                    <div class="modal-body" id="editpop">
+                        <!-- Form fields for editing, you'll dynamically populate these fields using JavaScript -->
+                        <input type="text" id="role" name="role" class="form-control" placeholder="Role"
+                            required>
+                        <input type="number" id="availablePlaces" name="available_places" class="form-control"
+                            placeholder="Available Places" required>
+                        <input type="text" id="qualifications" name="qualifications" class="form-control"
+                            placeholder="Qualifications" required>
+                        <input type="text" id="jobConditions" name="job_conditions" class="form-control"
+                            placeholder="Job Conditions" required>
+                    </div>
+                    <style>
+                        #editpop input{
+                            margin: auto;
+    border-radius: 1rem;    margin-bottom: 1rem;
 
-                    </th>
-
-
-
-                </tr>
-            </form>
-        </table>
+                        }
+                    </style>
+                    <div class="modal-footer">
+    <!--                    <button type="button" -->
+    <!--                  style="  color: hsl(177, 82%, 27%);-->
+    <!--background: white;-->
+    <!--font-weight: bold;-->
+    <!--width: fit-content;"-->
+    <!--class="btn btn-secondary" data-dismiss="modal">اغلاق</button>-->
+                        <button 
+    type="submit" class="btn btn-primary"   style="  color: hsl(177, 82%, 27%);
+    background: white;
+    font-weight: bold;
+        width:100% !important;" 
+        onmouseover="this.style.color='white'; this.style.backgroundColor='hsl(177, 82%, 27%)';" onmouseout="this.style.color='hsl(177, 82%, 27%)'; this.style.backgroundColor='white';">
+    
+    
+    حفظ التعديلات
+    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+    {{-- @endforeach --}}
+
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -1114,7 +1240,58 @@ document.getElementById('logout-form').submit();">تسجيل
             });
         });
     </script>
+    <script>
+        function confirmDelete(specialistId) {
+            if (confirm("Are you sure you want to delete this specialist?")) {
+                document.getElementById('delete-form-' + specialistId).submit();
+            }
+        }
 
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const specialistId = this.getAttribute('data-specialist-id');
+                const role = this.getAttribute('data-role');
+                const availablePlaces = this.getAttribute('data-available-places');
+                const qualifications = this.getAttribute('data-qualifications');
+                const jobConditions = this.getAttribute('data-job-conditions');
+
+                // Populate the modal fields
+                document.getElementById('role').value = role;
+                document.getElementById('availablePlaces').value = availablePlaces;
+                document.getElementById('qualifications').value = qualifications;
+                document.getElementById('jobConditions').value = jobConditions;
+
+                // Update the form action
+                document.getElementById('editForm').action = `/specialists/${specialistId}`;
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableBody = document.querySelector('#customers-container-sm tbody');
+            const addButton = document.getElementById('add-specialist-btn');
+
+            addButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent any default action
+
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+            <td><input type="text" name="specialistRole[]" class="form-control" placeholder="التخصص المطلوب"></td>
+            <td><input type="number" name="availablePlaces[]" class="form-control" placeholder="عدد الأماكن المتاحة"></td>
+            <td><input type="text" name="qualifications[]" class="form-control" placeholder="المؤهلات المطلوبة"></td>
+            <td><input type="text" name="jobConditions[]" class="form-control" placeholder="شروط التقديم للوظيفة"></td>
+            <td><button type="button" class="btn btn-danger remove-btn" onclick="removeRow(this)" style="margin-top: .75rem;
+    background: red;
+    width: fit-content;">حذف</button></td>
+        `;
+            });
+        });
+
+        function removeRow(button) {
+            button.closest('tr').remove();
+        }
+    </script>
 
 </body>
 

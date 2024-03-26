@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Company;
 use App\Models\Question;
 use App\Models\JopSearch;
@@ -10,9 +11,11 @@ use App\Models\Logo_company;
 use App\Models\User_company;
 use App\Models\Qualification;
 use App\Models\Section_three;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\SpecialistRoleController;
 use App\Http\Controllers\QualificationSpecializationController;
 
 /*
@@ -96,11 +99,12 @@ Route::post("UpdateCompany/{id}", [CompanyController::class, 'NewUpdate'])->name
 // Route::get("/search",[CompanyController::class,'search']);
 Route::get('/i', function () {
     $id = Auth::user()->id;
-
+    $company = User::find($id);
+    $specialists = $company->specialistRoles; 
     $company = Company::where('user_id', $id)->first();
     $User_companys = User_company::where('company_id', $company->id)->get();
 
-    return view('i', compact('company', 'User_companys'));
+    return view('i', compact('company', 'User_companys', 'specialists'));
 })->name('dashboardCompany');
 
 Route::get('search', [CompanyController::class, 'search']);
@@ -109,3 +113,11 @@ Route::get('search', [CompanyController::class, 'search']);
 Route::get("UpdateDash/{id}", [CompanyController::class, 'UpdateDash'])->name('UpdateDash');
 
 Route::get('/specializations-for-qualification/{qualificationId}', [QualificationSpecializationController::class, 'getSpecializationsForQualification']);
+
+Route::post('/store-specialist-roles/{id}', [SpecialistRoleController::class, 'store'])->name('store_specialist_roles');
+
+// Update the specified specialist by ID
+Route::put('/specialists/{specialistId}', [SpecialistRoleController::class, 'update'])->name('specialist.update');
+
+// Delete the specified specialist by ID
+Route::delete('/specialists/{specialistId}', [SpecialistRoleController::class, 'destroy'])->name('specialist.destroy');

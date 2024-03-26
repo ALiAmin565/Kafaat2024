@@ -51,14 +51,39 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
+        body {
+  font-family: 'Tajawal', sans-serif;
+}
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
-<body>
-    <div class="container">
+<body style="">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5" style="
+    display: flex;
+    justify-content: space-between;
+    background: #f1eeee !important;    margin-bottom: 3rem;">
+    <div class="navbar-nav ml-auto">
+        <a href="{{ route('home_page') }}" class="nav-item nav-link active" style="font-size: larger; font-weight: 700;">
+            <i class="fa fa-home"></i> 
+            الصفحة الرئيسية
+        </a>
+    </div>
+    <a href="{{ route('home_page') }}" class="navbar-brand">
+        <img id="logo_for_phone" class="img-fluid" src="{{ asset('logo/LogoMain.png') }}" alt="Logo" style="width: 180px;">
+    </a>
+
+</nav>
+    <div class="container" style="background:none">
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
-                <h1 style="text-align: center;color:hsl(177, 82%, 27%);">تسجيل بيانات المتقدم</h1>
+                <h1 style="text-align: center;color:hsl(177, 82%, 27%);">
+                    
+                    <i class="fas fa-user-plus"></i>
+                    سجل بياناتك</h1>
             </div>
             <div class="col-md-8">
                 <form method="POST" action="{{ route('register') }}" class="sign-in-form"
@@ -129,7 +154,9 @@
                     {{-- New Code --}}
                     <div class="input-field">
                         <i class="fas fa-graduation-cap"></i>
-                        <select id="qualification" class="form-control" name="qualification" required>
+                        <select id="qualification" class="form-control" name="qualification" required style="width: 102%;
+    border-radius: 3rem;
+    background: #f0f0f0;    border: 1px solid #eceef1;">
                             <option value="">اختر المؤهل الدراسي</option>
                             @foreach ($qualifications as $qualification)
                                 <option value="{{ $qualification->id }}">{{ $qualification->name }}</option>
@@ -138,7 +165,9 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-briefcase"></i>
-                        <select id="specialist" class="form-control" name="specialist" required>
+                        <select id="specialist" class="form-control" name="specialist" required style="width: 102%;
+    border-radius: 3rem;
+    background: #f0f0f0;    border: 1px solid #eceef1;">
                             <option value="">اختر التخصص</option>
                             <!-- Options will be loaded here -->
                         </select>
@@ -198,7 +227,7 @@
                     </div>
 
 
-                    <input type="submit" value="دخول" class="btn solid" style="font-size:20px;" />
+                    <input type="submit" value="اتمام التسجيل" class="btn solid" style="font-size:20px;border-radius: 0.5rem;" />
 
                 </form>
             </div>

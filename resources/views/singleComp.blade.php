@@ -861,12 +861,22 @@
                                     @endif
                                 </form>
 
-                                <button type="button" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;">
-                                    <a href="mailto:{{ $company[0]->User->email }}" class="btn" style="color: hsl(177, 82%, 27%); background: white; font-weight: bold; text-decoration: none;">
+                                <button type="button"
+                                    style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;margin:1rem">
+                                    <a href="mailto:{{ $company[0]->User->email }}" class="btn"
+                                        style="color: hsl(177, 82%, 27%); background: white; font-weight: bold; text-decoration: none;">
                                         قم بارسال ايميل
                                     </a>
                                 </button>
-+                                
+                                <!--علشان الاجتماع -->
+                                <button type="button"
+                                    style="color: hsl(177, 82%, 27%); background: white; font-weight: bold;margin:1rem">
+                                    <a href="mailto:{{ $company[0]->User->email }}" class="btn"
+                                        style="color: hsl(177, 82%, 27%); background: white; font-weight: bold; text-decoration: none;">
+                                الانضمام الي الاجتماع
+                                    </a>
+                                </button>
+                                
 
 
                                 {{ $company[0]->email }}
@@ -1026,67 +1036,117 @@
                             {{ $company[0]->brief }}
                         </div>
                     </section>
-                    <section class="css-ghicub" style="margin-bottom: 14%;">
-                        <h2 class="css-fwj1k5">
-                            الوظائف المتاحة
-                        </h2>
-                        <style data-emotion="css 1t5f0fr">
-                            .css-1t5f0fr {
-                                font-size: 14px;
-                                font-weight: 400;
-                                font-style: normal;
-                                letter-spacing: -0.35px;
-                                line-height: 22px;
-                                color: #001433;
-                                word-break: break-word;
-                            }
+                    <!--<section class="css-ghicub" style="margin-bottom: 14%;">-->
+                    <!--    <h2 class="css-fwj1k5">-->
+                    <!--        الوظائف المتاحة-->
+                    <!--    </h2>-->
+                    <!--    <style data-emotion="css 1t5f0fr">-->
+                    <!--        .css-1t5f0fr {-->
+                    <!--            font-size: 14px;-->
+                    <!--            font-weight: 400;-->
+                    <!--            font-style: normal;-->
+                    <!--            letter-spacing: -0.35px;-->
+                    <!--            line-height: 22px;-->
+                    <!--            color: #001433;-->
+                    <!--            word-break: break-word;-->
+                    <!--        }-->
 
-                            .css-1t5f0fr p {
-                                margin-top: 12px;
-                                margin-bottom: 12px;
-                            }
+                    <!--        .css-1t5f0fr p {-->
+                    <!--            margin-top: 12px;-->
+                    <!--            margin-bottom: 12px;-->
+                    <!--        }-->
 
-                            .css-1t5f0fr ul,
-                            .css-1t5f0fr ol {
-                                list-style-type: disc;
-                                padding-left: 18px;
-                            }
+                    <!--        .css-1t5f0fr ul,-->
+                    <!--        .css-1t5f0fr ol {-->
+                    <!--            list-style-type: disc;-->
+                    <!--            padding-left: 18px;-->
+                    <!--        }-->
 
-                            @media screen and (max-width: 991px) {
-                                .css-1t5f0fr {
-                                    padding: 0 12px;
+                    <!--        @media screen and (max-width: 991px) {-->
+                    <!--            .css-1t5f0fr {-->
+                    <!--                padding: 0 12px;-->
 
-                                }
-                            }
-                        </style>
-                        <div class="css-1t5f0fr">
-                            @php
-                                echo nl2br($company[0]->AvailabilityWork);
-                            @endphp
-                        </div>
-                    </section>
-                    <style data-emotion="css 1ytqpk1">
-                        .css-1ytqpk1 {
-                            background: #ffffff;
-                            margin-bottom: 16px;
-                            width: 100%;
-                            border: 1px solid #D9DDE4;
-                            border-radius: 0 4px 4px 0;
-                            padding: 12px 16px 0;
-                            border-left: 4px solid #0055D9;
-                        }
+                    <!--            }-->
+                    <!--        }-->
+                    <!--    </style>-->
+                    <!--    <div class="css-1t5f0fr">-->
+                    <!--        @php-->
+                    <!--            echo nl2br($company[0]->AvailabilityWork);-->
+                    <!--        @endphp-->
+                    <!--    </div>-->
+                    <!--</section>-->
+                    <!--<style data-emotion="css 1ytqpk1">-->
+                    <!--    .css-1ytqpk1 {-->
+                    <!--        background: #ffffff;-->
+                    <!--        margin-bottom: 16px;-->
+                    <!--        width: 100%;-->
+                    <!--        border: 1px solid #D9DDE4;-->
+                    <!--        border-radius: 0 4px 4px 0;-->
+                    <!--        padding: 12px 16px 0;-->
+                    <!--        border-left: 4px solid #0055D9;-->
+                    <!--    }-->
 
-                        @media screen and (min-width: 992px) {
-                            .css-1ytqpk1 {
-                                padding: 32px 32px 8px;
-                                border-left-width: 3px;
-                            }
-                        }
-                    </style>
+                    <!--    @media screen and (min-width: 992px) {-->
+                    <!--        .css-1ytqpk1 {-->
+                    <!--            padding: 32px 32px 8px;-->
+                    <!--            border-left-width: 3px;-->
+                    <!--        }-->
+                    <!--    }-->
+                    <!--</style>-->
+
+                    @if (isset($specialists))
+                       <div class="mt-4 css-ghicub" dir="rtl">
+            <h3>الوظائف المطلوبة </h3>
+             <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>التخصص المطلوب</th>
+                        <th>عدد الأماكن المتاحة</th>
+                        <th>	المؤهلات المطلوبة</th>
+                        <th>شروط التقديم للوظيفة	</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($specialists as $specialist)
+                        <tr>
+                            <td>{{ $specialist->role }}</td>
+                            <td>{{ $specialist->available_places }}</td>
+                            <td>{{ $specialist->qualifications }}</td>
+                            <td>{{ $specialist->job_conditions }}</td>
+                            <td>
+                                <!-- Edit Button, triggers modal -->
+                                <button type="button" class="btn btn-primary edit-btn" data-toggle="modal"
+                                    data-target="#editModal" data-specialist-id="{{ $specialist->id }}"
+                                    data-role="{{ $specialist->role }}"
+                                    data-available-places="{{ $specialist->available_places }}"
+                                    data-qualifications="{{ $specialist->qualifications }}"
+                                    data-job-conditions="{{ $specialist->job_conditions }}" style="margin-top: .75rem;
+    background: hsl(177, 82%, 27%);
+    width: fit-content; " onmouseout="this.style.color='white'; this.style.backgroundColor='hsl(177, 82%, 27%)';" onmouseover="this.style.color='hsl(177, 82%, 27%)'; this.style.backgroundColor='white';">تقديم</button>
+
+                            </td>
+                            
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+                    @endif
+
 
         </div>
     </div>
     @include('include.footer')
+    <style>
+        #mrfooter{
+                margin-top: 3rem;
+
+        }
+    </style>
     <script></script>
 </body>
 

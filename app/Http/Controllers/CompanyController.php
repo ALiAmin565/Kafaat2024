@@ -49,7 +49,11 @@ class CompanyController extends Controller
      */
     public function show(Request $request, $id)
     {
-        // dd($request, $id);
+
+        $company = User::find($id);
+        // dd($company);
+        $specialists = $company->specialistRoles;
+        // dd($specialists);
         $auth_id = explode('.', $request->auth_id);
 
         if (empty($request->auth_id)) {
@@ -59,7 +63,7 @@ class CompanyController extends Controller
                 'company_id' => $id,
             ])->get();
 
-            return view('singleComp', compact('company', 'User_companys'));
+            return view('singleComp', compact('company', 'User_companys', 'specialists'));
         } else {
             $auth_finsh = $auth_id[1];
 
@@ -75,7 +79,7 @@ class CompanyController extends Controller
                 'company_id' => $company_finsh,
             ])->get();
 
-            return view('singleComp', compact('company', 'User_companys'));
+            return view('singleComp', compact('company', 'User_companys', 'specialists'));
         }
     }
 
